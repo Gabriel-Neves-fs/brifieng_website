@@ -3,11 +3,11 @@ const SERVICE_ID = import.meta.env.VITE_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_TEMPLATE_ID;
 
 const emailConfigured = Boolean(PUBLIC_KEY && SERVICE_ID && TEMPLATE_ID);
+const missingEmailConfigMessage =
+  "EmailJS sem credenciais. Configure o .env local ou as variáveis de ambiente na Vercel.";
 
 if (!emailConfigured) {
-  console.warn(
-    "Credenciais do EmailJS não configuradas. Preencha o arquivo .env",
-  );
+  console.warn(missingEmailConfigMessage);
 }
 
 if (emailConfigured) {
@@ -93,7 +93,7 @@ function getEmailJSErrorMessage(err) {
   const normalizedText = String(text).toLowerCase();
 
   if (!emailConfigured) {
-    return "EmailJS sem credenciais. Verifique o arquivo .env.";
+    return missingEmailConfigMessage;
   }
 
   if (err?.status === 422) {
@@ -160,7 +160,7 @@ Observações: ${getVal("obs")}
 
 async function enviarBriefing() {
   if (!emailConfigured) {
-    showToast("EmailJS sem credenciais. Verifique o arquivo .env.", "error");
+    showToast(missingEmailConfigMessage, "error");
     return;
   }
 
