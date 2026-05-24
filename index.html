@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Briefing — Criação de Site</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  </head>
+  <body>
+    <div class="page-header">
+      <div class="inner">
+        <div class="tag">Briefing</div>
+        <h1>Criação de Site</h1>
+        <p>
+          Preencha as perguntas abaixo para que possamos entender melhor o seu
+          projeto e montar uma proposta adequada.
+        </p>
+      </div>
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <main>
+      <!-- 1. SOBRE VOCÊ -->
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">01</span>
+          <span class="section-title">Sobre você</span>
+        </div>
+        <div class="field">
+          <label>Nome completo</label>
+          <input type="text" id="nome" placeholder="Seu nome" />
+        </div>
+        <div class="field">
+          <label>WhatsApp ou e-mail para contato</label>
+          <input
+            type="text"
+            id="contato"
+            placeholder="(11) 99999-9999 ou email@exemplo.com"
+          />
+        </div>
+        <div class="field">
+          <label>Qual é o seu negócio ou segmento?</label>
+          <input
+            type="text"
+            id="negocio"
+            placeholder="Ex: barbearia, loja de roupas, consultório..."
+          />
+        </div>
+      </div>
+
+      <!-- 2. OBJETIVO -->
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">02</span>
+          <span class="section-title">Objetivo do site</span>
+        </div>
+        <div class="field">
+          <label>Qual é o principal objetivo do site?</label>
+          <div class="radio-group" id="objetivo">
+            <div
+              class="radio-opt"
+              data-val="Vender produtos ou serviços"
+              onclick="selectRadio(this, 'objetivo')"
+            >
+              <div class="radio-dot"></div>
+              <div>
+                <div class="opt-label">Vender produtos ou serviços</div>
+                <div class="opt-desc">Página de vendas focada em conversão</div>
+              </div>
+            </div>
+            <div
+              class="radio-opt"
+              data-val="Divulgar o negócio"
+              onclick="selectRadio(this, 'objetivo')"
+            >
+              <div class="radio-dot"></div>
+              <div>
+                <div class="opt-label">Divulgar o negócio</div>
+                <div class="opt-desc">
+                  Apresentar a empresa, portfólio ou serviços
+                </div>
+              </div>
+            </div>
+            <div
+              class="radio-opt"
+              data-val="Captar leads / clientes"
+              onclick="selectRadio(this, 'objetivo')"
+            >
+              <div class="radio-dot"></div>
+              <div>
+                <div class="opt-label">Captar leads / clientes</div>
+                <div class="opt-desc">
+                  Coletar contatos de quem se interessa pelo serviço
+                </div>
+              </div>
+            </div>
+            <div
+              class="radio-opt"
+              data-val="Agendamento online"
+              onclick="selectRadio(this, 'objetivo')"
+            >
+              <div class="radio-dot"></div>
+              <div>
+                <div class="opt-label">Agendamento online</div>
+                <div class="opt-desc">
+                  Clientes marcam horários ou consultas pelo site
+                </div>
+              </div>
+            </div>
+            <div
+              class="radio-opt"
+              data-val="Informativo / institucional"
+              onclick="selectRadio(this, 'objetivo')"
+            >
+              <div class="radio-dot"></div>
+              <div>
+                <div class="opt-label">Informativo / institucional</div>
+                <div class="opt-desc">
+                  Blog, portal de notícias ou site de organização
+                </div>
+              </div>
+            </div>
+            <div
+              class="radio-opt"
+              data-val="Outro"
+              onclick="
+                selectRadio(this, 'objetivo');
+                toggleOutro(this);
+              "
+            >
+              <div class="radio-dot"></div>
+              <div>
+                <div class="opt-label">Outro</div>
+                <div class="opt-desc">Descreva o objetivo abaixo</div>
+              </div>
+            </div>
+          </div>
+          <div class="outro-field" id="outro-objetivo">
+            <textarea
+              id="objetivo_outro"
+              placeholder="Descreva o objetivo do site..."
+            ></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. FUNCIONALIDADES -->
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">03</span>
+          <span class="section-title">Funcionalidades desejadas</span>
+        </div>
+        <div class="field">
+          <label
+            >O que você gostaria que o site tivesse?
+            <span style="color: var(--muted); font-weight: 400"
+              >(pode marcar mais de um)</span
+            ></label
+          >
+          <div class="chips" id="funcs">
+            <div
+              class="chip"
+              data-val="Formulário de contato"
+              onclick="toggleChip(this)"
+            >
+              Formulário de contato
+            </div>
+            <div
+              class="chip"
+              data-val="Botão WhatsApp"
+              onclick="toggleChip(this)"
+            >
+              Botão WhatsApp
+            </div>
+            <div
+              class="chip"
+              data-val="Blog / notícias"
+              onclick="toggleChip(this)"
+            >
+              Blog / notícias
+            </div>
+            <div
+              class="chip"
+              data-val="Área de login"
+              onclick="toggleChip(this)"
+            >
+              Área de login
+            </div>
+            <div
+              class="chip"
+              data-val="Mapa / localização"
+              onclick="toggleChip(this)"
+            >
+              Mapa / localização
+            </div>
+            <div
+              class="chip"
+              data-val="Agendamento online"
+              onclick="toggleChip(this)"
+            >
+              Agendamento online
+            </div>
+            <div
+              class="chip"
+              data-val="Galeria de fotos"
+              onclick="toggleChip(this)"
+            >
+              Galeria de fotos
+            </div>
+            <div
+              class="chip"
+              data-val="Depoimentos / avaliações"
+              onclick="toggleChip(this)"
+            >
+              Depoimentos / avaliações
+            </div>
+            <div
+              class="chip"
+              data-val="Outro"
+              onclick="
+                toggleChip(this);
+                toggleFuncOutro(this);
+              "
+            >
+              Outro
+            </div>
+          </div>
+          <div class="outro-field" id="outro-func">
+            <textarea
+              id="func_outro"
+              placeholder="Descreva a funcionalidade..."
+            ></textarea>
+          </div>
+        </div>
+        <div class="field">
+          <label
+            >Algum detalhe sobre como essas funcionalidades devem
+            funcionar?</label
+          >
+          <textarea
+            id="func_desc"
+            placeholder="Ex: quero que o cliente preencha um orçamento e já receba por e-mail..."
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- 4. REFERÊNCIAS -->
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">04</span>
+          <span class="section-title">Referências e estilo</span>
+        </div>
+        <div class="field">
+          <label>Tem algum site que gostou e quer algo parecido?</label>
+          <input type="url" id="ref1" placeholder="https://..." />
+        </div>
+        <div class="field">
+          <label
+            >Mais alguma referência?
+            <span style="color: var(--muted); font-weight: 400"
+              >(opcional)</span
+            ></label
+          >
+          <input type="url" id="ref2" placeholder="https://..." />
+        </div>
+        <div class="field">
+          <label>Já tem identidade visual?</label>
+          <div class="chips" id="visual">
+            <div
+              class="chip"
+              data-val="Sim, tenho logo e cores"
+              onclick="toggleChipSingle(this, 'visual')"
+            >
+              Sim, tenho logo e cores
+            </div>
+            <div
+              class="chip"
+              data-val="Só tenho logo"
+              onclick="toggleChipSingle(this, 'visual')"
+            >
+              Só tenho logo
+            </div>
+            <div
+              class="chip"
+              data-val="Não tenho nada ainda"
+              onclick="toggleChipSingle(this, 'visual')"
+            >
+              Não tenho nada ainda
+            </div>
+            <div
+              class="chip"
+              data-val="Quero criar junto"
+              onclick="toggleChipSingle(this, 'visual')"
+            >
+              Quero criar junto
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. PRAZO E ORÇAMENTO -->
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">05</span>
+          <span class="section-title">Prazo e orçamento</span>
+        </div>
+        <div class="field">
+          <label>Qual é o prazo ideal para o site ficar pronto?</label>
+          <div class="radio-group" id="prazo">
+            <div
+              class="radio-opt"
+              data-val="Urgente — menos de 2 semanas"
+              onclick="selectRadio(this, 'prazo')"
+            >
+              <div class="radio-dot"></div>
+              <div>
+                <div class="opt-label">Urgente — menos de 2 semanas</div>
+              </div>
+            </div>
+            <div
+              class="radio-opt"
+              data-val="Normal — 1 a 2 meses"
+              onclick="selectRadio(this, 'prazo')"
+            >
+              <div class="radio-dot"></div>
+              <div><div class="opt-label">Normal — 1 a 2 meses</div></div>
+            </div>
+            <div
+              class="radio-opt"
+              data-val="Flexível — sem data definida"
+              onclick="selectRadio(this, 'prazo')"
+            >
+              <div class="radio-dot"></div>
+              <div>
+                <div class="opt-label">Flexível — sem data definida</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Tem ideia de orçamento disponível para o projeto?</label>
+          <div class="hint">
+            Isso ajuda a alinhar as expectativas e sugerir as melhores soluções.
+          </div>
+          <div class="radio-group" id="orcamento">
+            <div
+              class="radio-opt"
+              data-val="Até R$ 300"
+              onclick="selectRadio(this, 'orcamento')"
+            >
+              <div class="radio-dot"></div>
+              <div><div class="opt-label">Até R$ 300</div></div>
+            </div>
+            <div
+              class="radio-opt"
+              data-val="R$ 300 a R$ 800"
+              onclick="selectRadio(this, 'orcamento')"
+            >
+              <div class="radio-dot"></div>
+              <div><div class="opt-label">R$ 300 a R$ 800</div></div>
+            </div>
+            <div
+              class="radio-opt"
+              data-val="R$ 800 a R$ 1.500"
+              onclick="selectRadio(this, 'orcamento')"
+            >
+              <div class="radio-dot"></div>
+              <div><div class="opt-label">R$ 800 a R$ 1.500</div></div>
+            </div>
+            <div
+              class="radio-opt"
+              data-val="R$ 1.500 a R$ 3.000"
+              onclick="selectRadio(this, 'orcamento')"
+            >
+              <div class="radio-dot"></div>
+              <div><div class="opt-label">R$ 1.500 a R$ 3.000</div></div>
+            </div>
+            <div
+              class="radio-opt"
+              data-val="Acima de R$ 3.000"
+              onclick="selectRadio(this, 'orcamento')"
+            >
+              <div class="radio-dot"></div>
+              <div><div class="opt-label">Acima de R$ 3.000</div></div>
+            </div>
+            <div
+              class="radio-opt"
+              data-val="Ainda não sei / prefiro receber uma proposta"
+              onclick="selectRadio(this, 'orcamento')"
+            >
+              <div class="radio-dot"></div>
+              <div>
+                <div class="opt-label">
+                  Ainda não sei / prefiro receber uma proposta
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. EXTRAS -->
+      <div class="section">
+        <div class="section-head">
+          <span class="section-num">06</span>
+          <span class="section-title">Informações extras</span>
+        </div>
+        <div class="field">
+          <label
+            >Já tem domínio (endereço do site) ou hospedagem contratada?</label
+          >
+          <div class="chips" id="dominio">
+            <div
+              class="chip"
+              data-val="Sim"
+              onclick="toggleChipSingle(this, 'dominio')"
+            >
+              Sim
+            </div>
+            <div
+              class="chip"
+              data-val="Não"
+              onclick="toggleChipSingle(this, 'dominio')"
+            >
+              Não
+            </div>
+            <div
+              class="chip"
+              data-val="Não sei"
+              onclick="toggleChipSingle(this, 'dominio')"
+            >
+              Não sei
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Alguma coisa importante que ainda não perguntamos?</label>
+          <textarea
+            id="obs"
+            placeholder="Pode escrever qualquer detalhe que achar relevante..."
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- SUBMIT -->
+      <div class="submit-wrap">
+        <button class="submit-btn" id="submitBtn" onclick="enviarBriefing()">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="22" y1="2" x2="11" y2="13" />
+            <polygon points="22 2 15 22 11 13 2 9 22 2" />
+          </svg>
+          Enviar briefing
+        </button>
+      </div>
+    </main>
+
+    <footer>
+      <span style="color: #727272"> Desenvolvido por </span>
+      <span
+        href="https://w.app/dyhr30"
+        target="_blank"
+        style="color: #000000; text-decoration: underline"
+        >Gabriel Neves</span
+      >
+    </footer>
+
+    <div class="toast" id="toast"></div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
